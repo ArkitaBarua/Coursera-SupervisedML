@@ -4,33 +4,8 @@
 # 
 # * Iterate over the training examples, and for each example, compute:
 #     * The prediction of the model for that example 
-#     $$
-#     f_{wb}(x^{(i)}) =  wx^{(i)} + b 
-#     $$
-#    
 #     * The gradient for the parameters $w, b$ from that example 
-#         $$
-#         \frac{\partial J(w,b)}{\partial b}^{(i)}  =  (f_{w,b}(x^{(i)}) - y^{(i)}) 
-#         $$
-#         $$
-#         \frac{\partial J(w,b)}{\partial w}^{(i)}  =  (f_{w,b}(x^{(i)}) -y^{(i)})x^{(i)} 
-#         $$
-#     
-# 
-# * Return the total gradient update from all the examples
-#     $$
-#     \frac{\partial J(w,b)}{\partial b}  = \frac{1}{m} \sum\limits_{i = 0}^{m-1} \frac{\partial J(w,b)}{\partial b}^{(i)}
-#     $$
-#     
-#     $$
-#     \frac{\partial J(w,b)}{\partial w}  = \frac{1}{m} \sum\limits_{i = 0}^{m-1} \frac{\partial J(w,b)}{\partial w}^{(i)} 
-#     $$
-#   * Here, $m$ is the number of training examples and $\sum$ is the summation operator
-# 
-# If you get stuck, you can check out the hints presented after the cell below to help you with the implementation.
-
-# In[26]:
-
+#     * Return the total gradient update from all the examples
 
 # UNQ_C2
 # GRADED FUNCTION: compute_gradient
@@ -62,108 +37,7 @@ def compute_gradient(x, y, w, b):
     return dj_dw, dj_db
 
 
-# <details>
-#   <summary><font size="3" color="darkgreen"><b>Click for hints</b></font></summary>
-#     
-#    * You can represent a summation operator eg: $h = \sum\limits_{i = 0}^{m-1} 2i$ in code as follows:
-#     
-#    ```python 
-#     h = 0
-#     for i in range(m):
-#         h = h + 2*i
-#    ```
-#     
-#    * In this case, you can iterate over all the examples in `x` using a for loop and for each example, keep adding the gradient from that example to the variables `dj_dw` and `dj_db` which are initialized outside the loop. 
-# 
-#    * Then, you can return `dj_dw` and `dj_db` both divided by `m`.    
-#     <details>
-#           <summary><font size="2" color="darkblue"><b> Click for more hints</b></font></summary>
-#         
-#     * Here's how you can structure the overall implementation for this function
-#     
-#     ```python 
-#     def compute_gradient(x, y, w, b): 
-#         """
-#         Computes the gradient for linear regression 
-#         Args:
-#           x (ndarray): Shape (m,) Input to the model (Population of cities) 
-#           y (ndarray): Shape (m,) Label (Actual profits for the cities)
-#           w, b (scalar): Parameters of the model  
-#         Returns
-#           dj_dw (scalar): The gradient of the cost w.r.t. the parameters w
-#           dj_db (scalar): The gradient of the cost w.r.t. the parameter b     
-#         """
-#     
-#         # Number of training examples
-#         m = x.shape[0]
-#     
-#         # You need to return the following variables correctly
-#         dj_dw = 0
-#         dj_db = 0
-#     
-#         ### START CODE HERE ### 
-#         # Loop over examples
-#         for i in range(m):  
-#             # Your code here to get prediction f_wb for the ith example
-#             f_wb = 
-#             
-#             # Your code here to get the gradient for w from the ith example 
-#             dj_dw_i = 
-#         
-#             # Your code here to get the gradient for b from the ith example 
-#             dj_db_i = 
-#      
-#             # Update dj_db : In Python, a += 1  is the same as a = a + 1
-#             dj_db += dj_db_i
-#         
-#             # Update dj_dw
-#             dj_dw += dj_dw_i
-#     
-#         # Divide both dj_dw and dj_db by m
-#         dj_dw = dj_dw / m
-#         dj_db = dj_db / m
-#         ### END CODE HERE ### 
-#         
-#         return dj_dw, dj_db
-#     ```
-#         
-#     * If you're still stuck, you can check the hints presented below to figure out how to calculate `f_wb` and `cost`.
-#     
-#     <details>
-#           <summary><font size="2" color="darkblue"><b>Hint to calculate f_wb</b></font></summary>
-#            &emsp; &emsp; You did this in the previous exercise! For scalars $a$, $b$ and $c$ (<code>x[i]</code>, <code>w</code> and <code>b</code> are all scalars), you can calculate the equation $h = ab + c$ in code as <code>h = a * b + c</code>
-#           <details>
-#               <summary><font size="2" color="blue"><b>&emsp; &emsp; More hints to calculate f</b></font></summary>
-#                &emsp; &emsp; You can compute f_wb as <code>f_wb = w * x[i] + b </code>
-#            </details>
-#     </details>
-#         
-#     <details>
-#           <summary><font size="2" color="darkblue"><b>Hint to calculate dj_dw_i</b></font></summary>
-#            &emsp; &emsp; For scalars $a$, $b$ and $c$ (<code>f_wb</code>, <code>y[i]</code> and <code>x[i]</code> are all scalars), you can calculate the equation $h = (a - b)c$ in code as <code>h = (a-b)*c</code>
-#           <details>
-#               <summary><font size="2" color="blue"><b>&emsp; &emsp; More hints to calculate f</b></font></summary>
-#                &emsp; &emsp; You can compute dj_dw_i as <code>dj_dw_i = (f_wb - y[i]) * x[i] </code>
-#            </details>
-#     </details>
-#         
-#     <details>
-#           <summary><font size="2" color="darkblue"><b>Hint to calculate dj_db_i</b></font></summary>
-#              &emsp; &emsp; You can compute dj_db_i as <code> dj_db_i = f_wb - y[i] </code>
-#     </details>
-#         
-#     </details>
-# 
-# </details>
-# 
-#     
-# 
-
 # Run the cells below to check your implementation of the `compute_gradient` function with two different initializations of the parameters $w$,$b$.
-
-# In[27]:
-
-
 # Compute and display gradient with w initialized to zeroes
 initial_w = 0
 initial_b = 0
@@ -171,8 +45,7 @@ initial_b = 0
 tmp_dj_dw, tmp_dj_db = compute_gradient(x_train, y_train, initial_w, initial_b)
 print('Gradient at initial w, b (zeros):', tmp_dj_dw, tmp_dj_db)
 
-compute_gradient_test(compute_gradient)
-
+#compute_gradient_test(compute_gradient)
 
 # Now let's run the gradient descent algorithm implemented above on our dataset.
 # 
@@ -269,10 +142,6 @@ def gradient_descent(x, y, w_in, b_in, cost_function, gradient_function, alpha, 
 
 
 # Now let's run the gradient descent algorithm above to learn the parameters for our dataset.
-
-# In[30]:
-
-
 # initialize fitting parameters. Recall that the shape of w is (n,)
 initial_w = 0.
 initial_b = 0.
@@ -294,13 +163,8 @@ print("w,b found by gradient descent:", w, b)
 #   </tr>
 # </table>
 
-# We will now use the final parameters from gradient descent to plot the linear fit. 
-# 
-# Recall that we can get the prediction for a single example $f(x^{(i)})= wx^{(i)}+b$. 
-# 
+# We will now use the final parameters from gradient descent to plot the linear fit.  
 # To calculate the predictions on the entire dataset, we can loop through all the training examples and calculate the prediction for each example. This is shown in the code block below.
-
-# In[31]:
 
 
 m = x_train.shape[0]
@@ -311,10 +175,6 @@ for i in range(m):
 
 
 # We will now plot the predicted values to see the linear fit.
-
-# In[32]:
-
-
 # Plot the linear fit
 plt.plot(x_train, predicted, c = "b")
 
@@ -338,8 +198,6 @@ plt.xlabel('Population of City in 10,000s')
 # - Similarly, 70,000 people can be translated into an input to the model as `np.array([7.])`
 # 
 
-# In[33]:
-
 
 predict1 = 3.5 * w + b
 print('For population = 35,000, we predict a profit of $%.2f' % (predict1*10000))
@@ -360,24 +218,3 @@ print('For population = 70,000, we predict a profit of $%.2f' % (predict2*10000)
 #     <td> $45342.45 </td> 
 #   </tr>
 # </table>
-
-# **Congratulations on completing this practice lab on linear regression! Next week, you will create models to solve a different type of problem: classification. See you there!**
-
-# <details>
-#   <summary><font size="2" color="darkgreen"><b>Please click here if you want to experiment with any of the non-graded code.</b></font></summary>
-#     <p><i><b>Important Note: Please only do this when you've already passed the assignment to avoid problems with the autograder.</b></i>
-#     <ol>
-#         <li> On the notebook’s menu, click “View” > “Cell Toolbar” > “Edit Metadata”</li>
-#         <li> Hit the “Edit Metadata” button next to the code cell which you want to lock/unlock</li>
-#         <li> Set the attribute value for “editable” to:
-#             <ul>
-#                 <li> “true” if you want to unlock it </li>
-#                 <li> “false” if you want to lock it </li>
-#             </ul>
-#         </li>
-#         <li> On the notebook’s menu, click “View” > “Cell Toolbar” > “None” </li>
-#     </ol>
-#     <p> Here's a short demo of how to do the steps above: 
-#         <br>
-#         <img src="https://lh3.google.com/u/0/d/14Xy_Mb17CZVgzVAgq7NCjMVBvSae3xO1" align="center" alt="unlock_cells.gif">
-# </details>

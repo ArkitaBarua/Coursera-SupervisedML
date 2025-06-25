@@ -1,4 +1,4 @@
-# Assignment 1 - Supervised Machine Learning: Regression and Classification
+# Assignment 1 - Linear Regression
 
 ## Course Information
 
@@ -9,7 +9,7 @@
 
 ## Assignment Overview
 
-This repository contains my solutions for **Assignment 1** of the course, which focuses on:
+This directory contains my solutions for **Assignment 1** of the course, which focuses on:
 
 - Linear Regression with one variable
 - Implementing the cost function and gradient descent
@@ -28,17 +28,15 @@ This assignment was completed as part of the **Machine Learning Specialization**
 
 ## 📁 Exercises Included
 
-### 1. **Linear Regression with One Variable**
+### 1. `exercise1_compute_cost.py`
+- Implemented the **mean squared error cost function**  
+- Inputs: feature matrix `X`, target vector `y`, and parameter vector `theta`  
+- Output: scalar cost value `J`
 
-- Implemented the cost function: `compute_cost()` (Exercise-1)
-- Implemented gradient descent: `gradient_descent()` (Exercise-2)
-- Visualized training data and the regression line
-- Predicted profits for different city populations
-
-### 2. **Model Prediction and Cost Visualization**
-
-- Made predictions using the optimized parameters
-- Visualized the cost function surface and contours
+### 2. `exercise2_gradient_descent.py`
+- Implemented **gradient descent** to minimize the cost  
+- Iteratively updated `theta` using learning rate `alpha`  
+- Returned optimized parameters and history of cost values
 
 ---
 
@@ -59,9 +57,8 @@ This assignment was completed as part of the **Machine Learning Specialization**
 
 ---
 
-## 📂 Files Included
+## 🧠 Key Learnings
 
-- `exercise1_compute_cost.py` – Cost function implementation
-- `exercise2_gradient_descent.py` – Gradient descent implementation along with model predictions
-- `README.md` – This documentation
-
+- Understanding the Cost Function for linear regression model
+- Implemented gradient descent to iteratively minimize the cost and find optimal parameters.
+- Understood ans used Vectorization with NumPy instead of explicit loops.
